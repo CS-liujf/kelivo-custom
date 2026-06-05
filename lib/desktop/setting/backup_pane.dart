@@ -39,6 +39,8 @@ class _DesktopBackupPaneState extends State<DesktopBackupPane> {
   late TextEditingController _s3SecretAccessKey;
   late TextEditingController _s3SessionToken;
   late TextEditingController _s3Prefix;
+  late TextEditingController _webDavUserAgent;
+  late TextEditingController _s3UserAgent;
   bool _includeChats = true;
   bool _includeFiles = true;
   bool _s3PathStyle = true;
@@ -52,6 +54,7 @@ class _DesktopBackupPaneState extends State<DesktopBackupPane> {
     _username = TextEditingController(text: cfg.username);
     _password = TextEditingController(text: cfg.password);
     _path = TextEditingController(text: cfg.path);
+    _webDavUserAgent = TextEditingController(text: cfg.userAgent);
     _includeChats = cfg.includeChats;
     _includeFiles = cfg.includeFiles;
 
@@ -63,6 +66,7 @@ class _DesktopBackupPaneState extends State<DesktopBackupPane> {
     _s3SecretAccessKey = TextEditingController(text: s3.secretAccessKey);
     _s3SessionToken = TextEditingController(text: s3.sessionToken);
     _s3Prefix = TextEditingController(text: s3.prefix);
+    _s3UserAgent = TextEditingController(text: s3.userAgent);
     _s3PathStyle = s3.pathStyle;
   }
 
@@ -79,6 +83,8 @@ class _DesktopBackupPaneState extends State<DesktopBackupPane> {
     _s3SecretAccessKey.dispose();
     _s3SessionToken.dispose();
     _s3Prefix.dispose();
+    _webDavUserAgent.dispose();
+    _s3UserAgent.dispose();
     super.dispose();
   }
 
@@ -88,6 +94,7 @@ class _DesktopBackupPaneState extends State<DesktopBackupPane> {
       username: _username.text.trim(),
       password: _password.text,
       path: _path.text.trim().isEmpty ? 'kelivo_backups' : _path.text.trim(),
+      userAgent: _webDavUserAgent.text.trim(),
       includeChats: _includeChats,
       includeFiles: _includeFiles,
     );
@@ -106,6 +113,7 @@ class _DesktopBackupPaneState extends State<DesktopBackupPane> {
     String? username,
     String? password,
     String? path,
+    String? userAgent,
     bool? includeChats,
     bool? includeFiles,
   }) async {
@@ -118,6 +126,7 @@ class _DesktopBackupPaneState extends State<DesktopBackupPane> {
       path:
           path ??
           (_path.text.trim().isEmpty ? 'kelivo_backups' : _path.text.trim()),
+      userAgent: userAgent ?? _webDavUserAgent.text.trim(),
       includeChats: includeChats ?? _includeChats,
       includeFiles: includeFiles ?? _includeFiles,
     );
@@ -139,6 +148,7 @@ class _DesktopBackupPaneState extends State<DesktopBackupPane> {
           ? 'kelivo_backups'
           : _s3Prefix.text.trim(),
       pathStyle: _s3PathStyle,
+      userAgent: _s3UserAgent.text.trim(),
       includeChats: _includeChats,
       includeFiles: _includeFiles,
     );
@@ -161,6 +171,7 @@ class _DesktopBackupPaneState extends State<DesktopBackupPane> {
     String? sessionToken,
     String? prefix,
     bool? pathStyle,
+    String? userAgent,
     bool? includeChats,
     bool? includeFiles,
   }) async {
@@ -181,6 +192,7 @@ class _DesktopBackupPaneState extends State<DesktopBackupPane> {
               ? 'kelivo_backups'
               : _s3Prefix.text.trim()),
       pathStyle: pathStyle ?? _s3PathStyle,
+      userAgent: userAgent ?? _s3UserAgent.text.trim(),
       includeChats: includeChats ?? _includeChats,
       includeFiles: includeFiles ?? _includeFiles,
     );
@@ -431,6 +443,22 @@ class _DesktopBackupPaneState extends State<DesktopBackupPane> {
                     ),
                     _rowDivider(context),
                     _ItemRow(
+                      label: l10n.backupPageUserAgent,
+                      trailing: SizedBox(
+                        width: 420,
+                        child: TextField(
+                          controller: _webDavUserAgent,
+                          enabled: !busy,
+                          style: const TextStyle(fontSize: 14),
+                          decoration: _deskInputDecoration(
+                            context,
+                          ).copyWith(hintText: l10n.backupPageUserAgentHint),
+                          onChanged: (v) => _applyPartial(userAgent: v),
+                        ),
+                      ),
+                    ),
+                    _rowDivider(context),
+                    _ItemRow(
                       label: l10n.backupPageWebDavBackup,
                       trailing: Wrap(
                         spacing: 8,
@@ -663,6 +691,22 @@ class _DesktopBackupPaneState extends State<DesktopBackupPane> {
                             context,
                           ).copyWith(hintText: 'kelivo_backups'),
                           onChanged: (v) => _applyS3Partial(prefix: v),
+                        ),
+                      ),
+                    ),
+                    _rowDivider(context),
+                    _ItemRow(
+                      label: l10n.backupPageUserAgent,
+                      trailing: SizedBox(
+                        width: 420,
+                        child: TextField(
+                          controller: _s3UserAgent,
+                          enabled: !busy,
+                          style: const TextStyle(fontSize: 14),
+                          decoration: _deskInputDecoration(
+                            context,
+                          ).copyWith(hintText: l10n.backupPageUserAgentHint),
+                          onChanged: (v) => _applyS3Partial(userAgent: v),
                         ),
                       ),
                     ),
