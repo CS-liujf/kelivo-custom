@@ -1503,6 +1503,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get backupPageS3PathStyle => '路径风格（Path-style）';
 
   @override
+  String get backupPageUserAgent => 'User-Agent';
+
+  @override
+  String get backupPageUserAgentHint => '可选';
+
+  @override
   String get backupPageSave => '保存';
 
   @override
@@ -6390,6 +6396,12 @@ class AppLocalizationsZhHans extends AppLocalizationsZh {
   String get backupPageS3PathStyle => '路径风格（Path-style）';
 
   @override
+  String get backupPageUserAgent => 'User-Agent';
+
+  @override
+  String get backupPageUserAgentHint => '可选';
+
+  @override
   String get backupPageSave => '保存';
 
   @override
@@ -11275,6 +11287,12 @@ class AppLocalizationsZhHant extends AppLocalizationsZh {
 
   @override
   String get backupPageS3PathStyle => '路徑風格（Path-style）';
+
+  @override
+  String get backupPageUserAgent => 'User-Agent';
+
+  @override
+  String get backupPageUserAgentHint => '可選';
 
   @override
   String get backupPageSave => '儲存';
