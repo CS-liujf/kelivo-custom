@@ -4,6 +4,8 @@
 
 一个 Flutter LLM 聊天客户端
 
+> 本分支基于 **Kelivo v1.1.15+52** 修改。新增了 WebDAV / S3 备份 User-Agent 自定义支持，以及 Visual Studio 2026 兼容。
+
   <a href="https://discord.gg/Tb8DyvvV5T" target="_blank">
     <img src="https://img.shields.io/badge/Join%20our%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord"/>
   </a>
@@ -53,6 +55,8 @@
 - 💾 **数据备份** - 支持聊天记录备份和恢复
 - 🌐 **自定义请求** - 支持自定义 HTTP 请求头和请求体
 - 🔡 **自定义字体** - 支持自定义字体（系统字体 / Google Fonts）
+- 🗂️ **备份 User-Agent** - WebDAV 和 S3 备份设置支持自定义 `User-Agent` 请求头
+- 🪟 **Visual Studio 2026** - 增加 `_SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS` 以兼容 VS 2026
 - ⚙️ **Android 后台生成对话** - 可在后台持续生成消息（可在设置中开启）。
 
 ## 📱 平台支持

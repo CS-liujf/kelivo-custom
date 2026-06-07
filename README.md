@@ -4,6 +4,8 @@
 
 A Flutter LLM Chat Client
 
+> This fork is based on **Kelivo v1.1.15+52**. It adds User-Agent customization for WebDAV/S3 backups and Visual Studio 2026 support.
+
   <a href="https://discord.gg/Tb8DyvvV5T" target="_blank">
     <img src="https://img.shields.io/badge/Join%20our%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord"/>
   </a>
@@ -53,6 +55,8 @@ Thanks to [siliconflow.cn](https://siliconflow.cn) for providing free models in 
 - 💾 **Data Backup** - Supports chat history backup and restoration.
 - 🌐 **Custom Requests** - Supports custom HTTP request headers and bodies.
 - 🔡 **Custom Fonts** - Bring your own fonts (system fonts / Google Fonts).
+- 🗂️ **Backup User-Agent** - Customize `User-Agent` header for WebDAV and S3 backup settings.
+- 🪟 **Visual Studio 2026** - Added `_SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS` for VS 2026 compatibility.
 - ⚙️ **Android Background Generation** - Keep chat generation running in the background (optional setting).
 
 ## 📱 Platform Support
